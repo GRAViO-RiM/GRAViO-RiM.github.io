@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>GRAViO</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="GRAViO">
@@ -11,14 +11,32 @@
 <link rel="icon" href="IMG_0433.jpeg">
 <meta property="og:title" content="GRAViO">
 <meta property="og:image" content="https://gravio-rim.github.io/IMG_0433.jpeg">
-<style>
-html,body{margin:0;height:100%;background:#000}
-body{display:flex;align-items:center;justify-content:center}
-img{width:170px;height:170px;border-radius:38px}
-</style>
+<style>#sp{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:99}#sp img{width:170px;height:170px;border-radius:38px}</style>
 </head>
 <body>
-<img src="IMG_0433.jpeg" alt="GRAViO">
-<script>setTimeout(function(){location.replace("https://script.google.com/macros/s/AKfycbzUu3JX5nRHO5Sp6xQuuoC3dHPBU9uv35SpFGO1-fFOfvfU-y0PqmuZJD_UbqHMUa36/exec")},900);</script>
+<div id="sp"><img src="IMG_0433.jpeg" alt="GRAViO"></div>
+<script>
+var U="https://script.google.com/macros/s/AKfycby3Catn-1c17gQJ6RUc9_OiHL1RjShJzYtP5rKEdIlfmx1JflIGw8D4M-HvbIX2cnTV/exec";
+var S={g:function(k){try{return localStorage.getItem(k)}catch(e){return null}},s:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+var touched=false;document.addEventListener('pointerdown',function(){touched=true},true);
+function call(a,t,d){return fetch(U,{method:'POST',body:JSON.stringify({a:a,t:t,d:d})}).then(function(r){return r.json()})}
+function pk(){return 'grv_pg_'+(S.g('grv_role')||'')}
+function run(js){var n=document.createElement('script');n.textContent=js;document.body.appendChild(n)}
+window.google={script:{get run(){var ok,ko,o={withSuccessHandler:function(f){ok=f;return o},withFailureHandler:function(f){ko=f;return o},
+ API:function(a,t,d){
+  if(a==='page'){var c=S.g(pk());var net=call(a,t,d).then(function(r){
+    if(r.ok){S.s(pk(),r.v);if(c&&c!==r.v&&!touched){document.querySelectorAll('.tabs,.foot').forEach(function(x){x.remove()});run(r.v)}}
+    else if(c&&r.err==='SESSION'){localStorage.removeItem(pk());logout()}return r});
+   if(c){setTimeout(function(){ok&&ok({ok:1,v:c})},0);return}
+   net.then(function(r){ok&&ok(r)},function(e){ko&&ko(e)});return}
+  call(a,t,d).then(function(r){ok&&ok(r)},function(e){ko&&ko(e)})}};return o}}};
+function boot(html){var d=new DOMParser().parseFromString(html,'text/html'),sc=[].slice.call(d.querySelectorAll('script'));
+ sc.forEach(function(s){s.remove()});d.querySelectorAll('style').forEach(function(s){document.head.appendChild(s)});
+ document.body.innerHTML=d.body.innerHTML;sc.forEach(function(s){run(s.textContent)});
+ var lo=window.logout;window.logout=function(){try{Object.keys(localStorage).forEach(function(k){if(k.indexOf('grv_pg_')===0)localStorage.removeItem(k)})}catch(e){}lo()}}
+var B=null;try{B=JSON.parse(S.g('grv_b')||'null')}catch(e){}
+var fresh=call('bundle').then(function(r){if(r.ok){var old=B&&B.ver;S.s('grv_b',JSON.stringify(r.v));if(!B)boot(r.v.shell);else if(old!==r.v.ver&&!touched)location.reload()}return r});
+if(B)boot(B.shell);else fresh.catch(function(){document.getElementById('sp').innerHTML='<div style="color:#fff;font:14px Arial;text-align:center">⚠️ لا يوجد اتصال<br><br><button onclick="location.reload()" style="padding:10px 20px;border-radius:10px;border:0">إعادة المحاولة</button></div>'});
+</script>
 </body>
 </html>
