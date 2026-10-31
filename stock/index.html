@@ -8,16 +8,28 @@
   <meta name="apple-mobile-web-app-title" content="GRAViO">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="description" content="GRAViO — المبيعات والمخزون">
+  <script>
+'use strict';
+// Keep the install page in Safari so its icon can be added first. Installed
+// shortcuts open the existing Apps Script app without copying business data.
+const appUrl = 'https://script.google.com/macros/s/AKfycbx6sjWIEqTnXcwEpg1Nbgwfgee45IT3cXTwsWLcnJrHZBVQqzRaGiyQSjOQzrSs64BO6A/exec';
+const isInstalled = window.navigator.standalone === true ||
+  window.matchMedia('(display-mode: standalone)').matches;
+if (isInstalled && !new URLSearchParams(window.location.search).has('install')) {
+  window.location.replace(appUrl);
+}
+
+  </script>
   <title>GRAViO</title>
-  <link rel="apple-touch-icon" href="./icon.png">
-  <link rel="icon" type="image/png" href="./icon.png">
+  <link rel="apple-touch-icon" href="./icon-black.png">
+  <link rel="icon" type="image/png" href="./icon-black.png">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./style.css">
-  <script src="./launch.js" defer></script>
+
 </head>
 <body>
   <main>
-    <img src="./icon.png" width="192" height="192" alt="GRAViO Stock Control" class="app-icon">
+    <img src="./icon-black.png" width="192" height="192" alt="GRAViO Stock Control" class="app-icon">
     <h1>GRAViO</h1>
     <p class="subtitle">المبيعات والمخزون</p>
     <a id="openApp" class="open-app" href="https://script.google.com/macros/s/AKfycbx6sjWIEqTnXcwEpg1Nbgwfgee45IT3cXTwsWLcnJrHZBVQqzRaGiyQSjOQzrSs64BO6A/exec">فتح التطبيق</a>
