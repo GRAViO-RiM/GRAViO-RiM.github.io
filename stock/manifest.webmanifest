@@ -1,0 +1,14 @@
+{
+  "id": "./",
+  "name": "GRAViO Stock Control",
+  "short_name": "GRAViO",
+  "description": "المبيعات والمخزون",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [{ "src": "./icon.png", "type": "image/png", "sizes": "512x512", "purpose": "any" }]
+}
